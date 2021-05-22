@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css">
+  <title>Form with Excel Sheet</title>
+</head>
+<body>
+  <div class="container">
+    <form method="post" autocomplete="off" name="google-sheet">
+    <div class="form">
+      <h1 class="form_heading">Create Account</h1>
+      <p class="form_text">Already have an account?<a href="#">Sign In</a> </p>
+      <div class="form_input">
+        <input type="text" name="Username" value="" placeholder="Username">
+        <div class="form_subInput">
+          <input type="text" name="FirstName" value=""placeholder="First Name">
+          <input type="text" name="LastName" value=""placeholder="Last Name">
+        </div>
+        <input type="text" name="Email" value=""placeholder="Email">
+        <button type="button" name="submit">Sign Up</button>
+      </div>
+      <div class="checkbox_section">
+      <input type="checkbox" name="" value="">
+      <p class="checkbox_text">I have read and agree to the <a href="">Terms of Service</a></p>
+    </div>
+    </div>
+  </form>
+  </div>
+
+  <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwL7OHmGl1KHhHYAj2yyqwjZ0Zhgfpt3T530o8E-1q5azSfRRt_61AZX0Zhi4qgwNY7/exec'
+      const form = document.forms['Form Responses 1']
+
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
+
+</body>
+</html>
